@@ -1440,10 +1440,31 @@ describe "UserAgent: Mozilla/5.0 (iPad; CPU OS 6_1 like Mac OS X; en-us) AppleWe
   it "should return '23.0.1271.100' as it's version" do
     @useragent.version.should == '23.0.1271.100'
   end
-  it "should return 'iPhone' as it's platform" do
+  it "should return 'iPad' as it's platform" do
     @useragent.platform.should == "iPad"
   end
   it "should return 'iOS 6.1' as it's os" do
     @useragent.os.should == 'iOS 6.1'
+  end
+end
+
+describe "UserAgent: Mozilla/5.0 (iPhone; CPU iPhone OS 6_0_1 like Mac OS X; en-us) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/23.0.1271.100 Mobile/10A523 Safari/8536.25" do
+  before do
+    @useragent = UserAgent.parse("Mozilla/5.0 (iPhone; CPU iPhone OS 6_0_1 like Mac OS X; en-us) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/23.0.1271.100 Mobile/10A523 Safari/8536.25")
+  end
+  it "should return 'Chrome' as it's browser" do
+    @useragent.browser.should == 'Chrome'
+  end
+  it "should return '536.26' as it's build" do
+    @useragent.build.should == '536.26'
+  end
+  it "should return '23.0.1271.100' as it's version" do
+    @useragent.version.should == '23.0.1271.100'
+  end
+  it "should return 'iPhone' as it's platform" do
+    @useragent.platform.should == 'iPhone'
+  end
+  it "should return 'iOS 6.0.1' as it's os" do
+    @useragent.os.should == 'iOS 6.0.1'
   end
 end

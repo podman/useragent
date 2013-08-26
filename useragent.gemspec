@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name    = "useragent"
-  s.version = "0.7.0"
+  s.version = "0.7.1"
 
   s.homepage    = "http://github.com/podman/useragent"
   s.summary     = "HTTP User Agent parser"

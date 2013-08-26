@@ -113,7 +113,7 @@ class UserAgent
         elsif application
           if application.comment[0] =~ /Windows NT/
             OperatingSystems.normalize_os(application.comment[0])
-          elsif application.comment[1] =~ /CPU OS [\d_]+ like Mac OS X/
+          elsif application.comment[1] =~ /CPU (?:iPhone |iPod |iPad )?OS [\d_]+ like Mac OS X/
             OperatingSystems.normalize_os(application.comment[1])
           elsif application.comment[2].nil?
             OperatingSystems.normalize_os(application.comment[1])
