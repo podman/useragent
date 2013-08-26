@@ -20,7 +20,7 @@ class UserAgent
 
     private
       def self.detect_ios(os)
-         /CPU (?:iPhone |iPod )?OS ([\d_.]+)/.match(os) do |m|
+         /CPU (?:iPhone |iPod | iPad )?OS ([\d_.]+)/.match(os) do |m|
           return 'iOS %s' % m[1].gsub('_','.')
         end
 
