@@ -15,10 +15,22 @@ class UserAgent
     }.freeze
 
     def self.normalize_os(os)
-      Windows[os] || normalize_mac_os_x(os) || os
+      Windows[os] || detect_ios(os) || normalize_mac_os_x(os) ||os
     end
 
     private
+      def self.detect_ios(os)
+         /CPU (?:iPhone |iPod )?OS ([\d_.]+)/.match(os) do |m|
+          return 'iOS %s' % m[1].gsub('_','.')
+        end
+
+        if os =~ /like Mac OS X/
+          return 'iOS 3.0'
+        end
+
+        nil
+      end
+      
       def self.normalize_mac_os_x(os)
         if os =~ /(?:Intel|PPC) Mac OS X\s*([0-9_\.]+)?/
           if $1.nil?
